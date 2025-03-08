@@ -11,13 +11,13 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: Theme Redefine
+  title: jackoo 3 a.m.
   # Site subtitle
-  subtitle: Redefine Your Hexo Journey.
+  subtitle: 🌜🕒
   # Author name
-  author: The Redefine Team
+  author: '#jackoo'
   # Site URL
-  url: https://redefine.ohevan.com
+  url: https://jackoodesu.github.io
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -25,11 +25,14 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
   # Favicon
-  favicon: /images/redefine-favicon.svg
+  favicon: data:image/svg+xml,
+    <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+    <text y=%22.9em%22 font-size=%2290%22>🐵</text>
+    </svg>
   # Site logo
   logo: 
   # Site avatar
-  avatar: /images/redefine-avatar.svg
+  avatar: images/avatar.png
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -52,9 +55,9 @@ global:
   fonts:
     # Chinese fonts
     chinese: 
-      enable: false # Whether to enable custom chinese fonts
-      family:  # Font family
-      url:  # Font URL to CSS file
+      enable: true # Whether to enable custom chinese fonts
+      family: Noto Sans TC # Font family
+      url: https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap # Font URL to CSS file
     # English fonts
     english: 
       enable: false # Whether to enable custom english fonts
@@ -63,8 +66,8 @@ global:
     # Custom title fonts (navbar, sidebar)
     title:
       enable: false # Whether to enable custom title fonts
-      family:  # Font family
-      url:  # Font URL to CSS file
+      family: Noto Sans TC # Font family
+      url: https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap # Font URL to CSS file
   # Content max width
   content_max_width: 1000px
   # Sidebar width
@@ -89,10 +92,10 @@ global:
   # Whether to enable Preloader.
   preloader:
     enable: false
-    custom_message: # Custom message. If empty, the site title will be displayed
+    custom_message: # Custom mtrueessage. If empty, the site title will be displayed
   # Whether to enable open graph
   open_graph:
-    enable: true
+    enable: 
     image: /images/redefine-og.webp  # default og:image
     description: Hexo Theme Redefine, Redefine Your Hexo Journey.
   # Google Analytics
@@ -128,10 +131,10 @@ home_banner:
     light: /images/wallhaven-wqery6-light.webp # light mode
     dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  title: Theme Redefine
+  title: jackoo 3 a.m.
   # Home banner subtitle
   subtitle:
-    text: [] # subtitle text, array
+    text: [胡說八道，一派胡言，誤人子弟] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       show_author: false # Whether to show author
@@ -159,22 +162,22 @@ home_banner:
     # Whether to enable custom font
     enable: false
     # Font family
-    family: 
+    family: Noto Sans TC
     # URL to font CSS file
-    url:
+    url: https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap # Font URL to CSS file
   # Home banner social links
   social_links:
     # Whether to enable
-    enable: false
+    enable: true
     # Social links style
     style: default # default, reverse, center
     # Social links
     links:
-      github:  # your GitHub URL
+      github: https://github.com/JacKooDesu/ # your GitHub URL
       instagram: # your Instagram URL
       zhihu:  # your ZhiHu URL
-      twitter:  # your twitter URL
-      email:  # your email
+      twitter: https://x.com/jac_desu # your twitter URL
+      email: kuo741258@gmail.com # your email
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:
@@ -225,7 +228,7 @@ navbar:
   # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
   search:
     # Whether to enable
-    enable: false
+    enable: true
     # Preload search data when the page loads
     preload: true
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -294,16 +297,16 @@ articles:
     min2read: true # Whether to display reading time
   # Author label
   author_label: 
-    enable: true # Whether to enable
+    enable: false # Whether to enable
     auto: false # Whether to automatically add author label, e.g. Lv1, Lv2, Lv3...
     list: []
   # Code block settings
   code_block:
     copy: true # Whether to enable code block copy button
-    style: mac # mac | simple
+    style: simple # mac | simple
     highlight_theme: # Color scheme for highlightjs code highlighting. For preview, see https://highlightjs.org/examples
       light: github # light mode theme, support: github, atom-one-light, default
-      dark: vs2015 # dark mode theme, support: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
+      dark: atom-one-dark # dark mode theme, support: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
     font: # Custom font
       enable: false # Whether to enable
       family: # Font family
@@ -317,7 +320,7 @@ articles:
     init_open: true # Open toc by default
   # Whether to enable copyright notice
   copyright:
-    enable: true # Whether to enable
+    enable: false # Whether to enable
     default: cc_by_nc_sa # Default license, can be cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
   # Whether to enable lazyload for images
   lazyload: true
@@ -328,7 +331,7 @@ articles:
     # Whether to enable article recommendation
     enable: false
     # Article recommendation title
-    title: 推荐阅读
+    title: 推薦
     # Max number of articles to display
     limit: 3
     # Max number of articles to display mobile
@@ -344,7 +347,7 @@ articles:
 # Docs: https://redefine-docs.ohevan.com/posts/comment
 comment:
   # Whether to enable comment
-  enable: true
+  enable: false
   # Comment system
   system: waline # waline, gitalk, twikoo, giscus
   # System configuration
@@ -389,11 +392,11 @@ comment:
 # Docs: https://redefine-docs.ohevan.com/footer
 footer:
   # Show website running time
-  runtime: true # show website running time or not
+  runtime: false # show website running time or not
   # Icon in footer, write fontawesome icon code here
   icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
-  start: 2022/8/17 11:45:14
+  start: 2025/3/8 00:00:00
   # Site statistics
   statistics: true # show site statistics or not (total articles, total words)
   # Footer message
