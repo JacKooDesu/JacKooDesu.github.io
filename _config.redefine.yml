@@ -128,8 +128,8 @@ home_banner:
   style: fixed # static or fixed
   # Home banner image
   image: 
-    light: /images/wallhaven-wqery6-light.webp # light mode
-    dark: /images/wallhaven-wqery6-dark.webp # dark mode
+    light: /images/home-light-mode.svg # light mode
+    dark: /images/home-dark-mode.svg # dark mode
   # Home banner title
   title: jackoo 3 a.m.
   # Home banner subtitle
@@ -147,7 +147,7 @@ home_banner:
     smart_backspace: true # Whether to smart backspace
   # Color of home banner text
   text_color: 
-    light: "#fff" # light mode
+    light: "#61C0BF" # light mode
     dark: "#d1d1b6" # dark mode
   # Specific style of the text
   text_style: 
