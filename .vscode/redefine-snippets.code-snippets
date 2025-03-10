@@ -1,0 +1,61 @@
+{
+    "Note": {
+        "prefix": "redefine-note",
+        "body": [
+            "{% note ${type} ${icon} %}",
+            "",
+            "{% endnote %}"
+        ],
+        "scope": "markdown"
+    },
+    "Note Large": {
+        "prefix": "redefine-note-large",
+        "body": [
+            "{% notel ${type} ${icon} ${title} %}",
+            "",
+            "{% endnotel %}"
+        ],
+        "scope": "markdown"
+    },
+    "Button": {
+        "prefix": "redefine-btn",
+        "body": [
+            "{% btn ${size}::${text}::${url}::${icon} %}"
+        ],
+        "scope": "markdown"
+    },
+    "Button Regular": {
+        "prefix": "redefine-btn-regular",
+        "body": [
+            "{% btn regular::${text}::${url}::${icon} %}"
+        ],
+        "scope": "markdown"
+    },
+    "Fold": {
+        "prefix": "redefine-fold",
+        "body": [
+            "{% folding ${color}::${title} %}",
+            "",
+            "{% endfolding %}"
+        ],
+        "scope": "markdown"
+    },
+    "Tabs": {
+        "prefix": "redefine-tabs",
+        "body": [
+            "{% tabs ${id} %}",
+            "",
+            "{% endtabs %}"
+        ],
+        "scope": "markdown"
+    },
+    "Tab Item": {
+        "prefix": "redefine-tab-item",
+        "body": [
+            "<!-- tab ${name} -->",
+            "",
+            "<!-- endtab -->"
+        ],
+        "scope": "markdown"
+    }
+}
