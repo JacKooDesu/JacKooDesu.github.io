@@ -61,4 +61,7 @@ function hexo_resize_image() {
   });
 }
 
-window.onload = hexo_resize_image;
+// this is for the initial page load
+window.addEventListener("load", hexo_resize_image);
+// this is for swup.js
+swup.hooks.on("content:replace", hexo_resize_image);
