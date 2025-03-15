@@ -128,7 +128,7 @@ OnePlus 這邊只剩兩個選項：
 
 ![magisk](images/從中國淘了一台-Oneplus-13/5.jpg?x500)
 
-除了信號修復模塊，把幾個重要的模塊刷上去就差不多了：
+除了 [信號修復模塊](https://github.com/K58/fix-signal-oneplus13)，把幾個重要的模塊刷上去就差不多了：
 
 - [PlayIntegrityFix](https://github.com/chiteroman/PlayIntegrityFix)（原 SafetyNet，Google 新年快樂）
 - [Zygisk Next](https://github.com/Dr-TSNG/ZygiskNext)（內建的 Zygisk 其實也夠用）
