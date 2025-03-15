@@ -77,7 +77,7 @@ OnePlus 這邊只剩兩個選項：
 
 ## 開箱
 
-![all-in-package](images/從中國淘了一台-Oneplus-13/1.jpg?30)
+![all-in-package](images/從中國淘了一台-Oneplus-13/1.jpg?500x)
 ![phone](images/從中國淘了一台-Oneplus-13/2.jpg?500x)
 ![charger](images/從中國淘了一台-Oneplus-13/3.jpg?500x)
 
@@ -89,7 +89,7 @@ OnePlus 這邊只剩兩個選項：
 
 包裝還是維持大紅黑字設計（電競配色？），這次附的是 100W Type-A 的充電器，前一支 8T 附的是 65W Type-C，因為豆腐頭的原因附的線是 Type-A to Type-C，不確定甚麼原因要改這樣，C to C 應該也支援 100W PD 快充，沒買授權？
 
-![side](images/從中國淘了一台-Oneplus-13/4.jpg)
+![side](images/從中國淘了一台-Oneplus-13/4.jpg?500x)
 
 沒有想像中曲面，不錯！市場終於要回到直屏當道了。音量模式的三段開關改到左邊了，要花點時間適應。
 
@@ -119,6 +119,29 @@ OnePlus 這邊只剩兩個選項：
 8. `fastboot flash init_boot magisk_init_boot.img`
 9. `fastboot reboot`
 
+{% note purple %}
 很簡單對吧，雖然有點怕變磚所以也有載 EDL Firmware，好在一切順利。
+{% endnote %}
 
-![magisk](images/從中國淘了一台-Oneplus-13/5.jpg)
+![magisk](images/從中國淘了一台-Oneplus-13/5.jpg?x500)
+
+除了信號修復模塊，把幾個重要的模塊刷上去就差不多了：
+
+- PlayIntegrityFix（原 SafetyNet）
+- Zygisk Next
+
+## 後續使用
+
+目前使用第二天，有軟體不給跑就 Zygisk 拉黑單，例如鳴潮：
+
+![blacklist](images/從中國淘了一台-Oneplus-13/6.jpg?x500)
+
+Oxygen OS 大概也就那樣，說不上乾淨但也不至於充滿廣告跟用戶資料收集，不過還是要噴一下它的遊戲模式，對於音遊玩家來說是場惡夢，除了自動跳通知出來外，偶而還會吃掉多點觸控（防誤觸？），索性關了。
+
+之後使用如果有甚麼其他感想再補上，感謝 8T 陪伴的這些日子，可以退役了，等哪天有機會再託人送回中國修吧。
+
+![8t](images/從中國淘了一台-Oneplus-13/7.jpg?x500)
+
+{% note gray %}
+現在要開始一個個轉移應用程式的帳號了，其實遲遲不換手機很大一個原因是帳號遷移，我是金魚腦先按找回密碼了。。。
+{% endnote %}
