@@ -130,8 +130,8 @@ OnePlus 這邊只剩兩個選項：
 
 除了信號修復模塊，把幾個重要的模塊刷上去就差不多了：
 
-- PlayIntegrityFix（原 SafetyNet）
-- Zygisk Next
+- [PlayIntegrityFix](https://github.com/chiteroman/PlayIntegrityFix)（原 SafetyNet，Google 新年快樂）
+- [Zygisk Next](https://github.com/Dr-TSNG/ZygiskNext)（內建的 Zygisk 其實也夠用）
 
 ## 後續使用
 
