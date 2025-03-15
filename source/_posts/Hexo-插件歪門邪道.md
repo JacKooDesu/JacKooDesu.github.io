@@ -127,3 +127,7 @@ swup.hooks.on("content:replace", hexo_resize_image);
 ## 後話
 
 有了這個旁路，感覺能玩出更多花招就是了，也不會被主題綁死做一個堆疊，只能說 js 寫起來還是那麼單純又混亂。
+
+{% note gray %}
+`git submodule` 遲早會找機會寫一篇，一直搞不明白。。。
+{% endnote %}
