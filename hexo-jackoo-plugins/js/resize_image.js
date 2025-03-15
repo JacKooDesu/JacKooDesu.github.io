@@ -46,9 +46,8 @@ function hexo_resize_image() {
       attributes: true,
     },
     lazyloadObserver = new MutationObserver((ms) => {
-      ms.forEach((m) => {
-        m.target.onload = () => update_image_size(m.target);
-      });
+      img = ms[0]?.target;
+      img.onload = () => update_image_size(img);
       counter--;
       if (counter <= 0) lazyloadObserver.disconnect();
     });
