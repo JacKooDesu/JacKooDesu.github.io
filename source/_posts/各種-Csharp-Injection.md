@@ -6,7 +6,7 @@ tags: [Unity, C#]
 
 有時會碰到外部 Dll 或是其他專案成員寫的框架，想在不破壞原始碼為前提更改邏輯，`Code Injection` 就能派上用場。
 
-### 問題點
+## 問題點
 
 當然，前言只是以前困擾我的問題（以前實作的時候一直報錯），最近是因為我的練槍軟體專案 ALM 的回放機能一直難產，因為使用 PuerTs 給予熱更，本意是讓任務撰寫的自由度變高，但缺點就是沒辦法更好的捕捉程式碼步驟。
 
@@ -51,7 +51,7 @@ public Ball Ball(int typeIndex = 0)
 
 看起來有點愚蠢，一方面是我很懶惰，另一方面是假設哪天 `RecordMethodCall()` 改傳入參數或是擴充了其他多載，我不就需要全部引用的地方重寫？想了想何不用 AOP 的思維用 `Attribute` 的方式來標示哪些方法需要紀錄？
 
-### Harmony
+## Harmony
 
 `C#` 的反射有 `Emit` 命名空間，提供動態生成 `IL Code` 的功能，是非常酷的，但手刻 `IL Code` 等於是自己把痛苦面具給戴上了，為了減輕一袋米首先想到的是 `Harmony`，也就是 Modding 的老朋友，可以在執行階段進行非破壞性注入，同時沒那麼多硬核的 `IL Coding` 美孜孜噠，馬上用 `NuGet` 給安排上，後來發現 `NuGet` 版不適配 Unity，只好載 `Dll` 自己引用。
 
@@ -167,7 +167,7 @@ void _Cast(in Vector3 origin, in Vector3 direction, out IRaycastTarget target)
 - `il2cpp` 使用 `AOT`，在編譯時將原本虛擬機要使用的 `IL Code` 轉換成 `C++` 程式碼，之後用目標平台的 `C++` 編譯器把轉換後的 `C++` 程式碼與 `libil2cpp`（執行階段庫）一併輸出。
   {% endnotel %}
 
-### Mono.Cecil
+## Mono.Cecil
 
 `Mono.Cecil` 提供了竄改 `Dll` 的功能，同時也封裝了不少好用的方法降低 `IL Coding` 的難度。
 
@@ -372,7 +372,7 @@ public class PostBuildProcessor : IPostBuildPlayerScriptDLLs
 
 ![after-injection](/images/各種-Csharp-Injection/after-injection.png)
 
-### 後話
+## 後話
 
 大概就是這樣，由於還是逆向工程的菜雞，很多知識點沒辦法敘述得很清楚，特別是 `IL` 指令根本就不太熟，哪天學成歸來再寫一篇分享。
 
