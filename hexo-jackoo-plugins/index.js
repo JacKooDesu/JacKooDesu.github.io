@@ -15,3 +15,19 @@ hexo.extend.injector.register(
   '<script src="/js/resize_image.js"></script>',
   "default"
 );
+
+// inject mathjax
+hexo.extend.generator.register("js", function (locals) {
+  return {
+    path: "js/mathjax.js",
+    data: function () {
+      return fs.createReadStream("hexo-jackoo-plugins/js/mathjax.js");
+    },
+  };
+});
+
+hexo.extend.injector.register(
+  "body_end",
+  "<script src=/js/mathjax.js></script>",
+  "default"
+);
