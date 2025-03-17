@@ -214,6 +214,9 @@ navbar:
     Tags:
       icon: fa-solid fa-tags #图标
       path: /tags/ #链接
+    友站:
+      icon: fa-solid fa-wheelchair-move #图标
+      path: /links/
       # submenus:
         # 作者: 
         # Github: https://github.com/EvanNotFound/hexo-theme-redefine
