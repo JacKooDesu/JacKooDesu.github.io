@@ -112,7 +112,7 @@ OnePlus 這邊只剩兩個選項：
 2. 開發人員選項 > 開 OEM 解鎖引導
 3. `adb reboot bootloader`
 4. `fastboot flashing unlock`
-5. 執行下載的腳本，它大致上會幫你：
+5. 執行下載的腳本（用的是 `GLO .602` 版），它大致上會幫你：
     - 刷 fastboot 的系統引導
     - 刷入 Oxygen OS
     - 幫你移除不需要的邏輯分區
