@@ -1,7 +1,7 @@
 // import Hexo from "hexo";
 var fs = require("hexo-fs");
 
-hexo.extend.generator.register("js", function (locals) {
+hexo.extend.generator.register("resize_image", function (locals) {
   return {
     path: "js/resize_image.js",
     data: function () {
@@ -17,7 +17,7 @@ hexo.extend.injector.register(
 );
 
 // inject mathjax
-hexo.extend.generator.register("js", function (locals) {
+hexo.extend.generator.register("mathjax", function (locals) {
   return {
     path: "js/mathjax.js",
     data: function () {
@@ -33,7 +33,7 @@ hexo.extend.injector.register(
 );
 
 // inject swup script loader
-hexo.extend.generator.register("js", function (locals) {
+hexo.extend.generator.register("script_loader", function (locals) {
   return {
     path: "js/script_loader.js",
     data: function () {
@@ -44,6 +44,6 @@ hexo.extend.generator.register("js", function (locals) {
 
 hexo.extend.injector.register(
   "body_end",
-  '<script src="/js/script_loader.js"></script>',
+  "<script src=/js/script_loader.js></script>",
   "default"
 );
