@@ -31,3 +31,19 @@ hexo.extend.injector.register(
   "<script src=/js/mathjax.js></script>",
   "default"
 );
+
+// inject swup script loader
+hexo.extend.generator.register("js", function (locals) {
+  return {
+    path: "js/script_loader.js",
+    data: function () {
+      return fs.createReadStream("hexo-jackoo-plugins/js/script_loader.js");
+    },
+  };
+});
+
+hexo.extend.injector.register(
+  "body_end",
+  '<script src="/js/script_loader.js"></script>',
+  "default"
+);
