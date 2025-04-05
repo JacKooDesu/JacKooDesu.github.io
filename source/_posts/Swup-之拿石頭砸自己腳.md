@@ -26,7 +26,7 @@ tags: [JS]
 - 使用 Head Plugin 在 `head` 中插入新的腳本
 - 使用 Scripts Plugin 來執行新的或已存在的腳本（無論是在 head 或 body 中）
 
-那我不可能把腳本塞到 `head` 裡面（到下頁也不會清掉，雖然本來就不會清掉），也補可能寫 Scripts Plugin（等於我自己寫 Hexo 主題了），所以看來只能用之前的 {% post_link Hexo-插件歪門邪道 %} 來做點小魔改了。
+那我不可能把腳本塞到 `head` 裡面（到下頁也不會清掉，雖然本來就不會清掉），也不可能寫 Scripts Plugin（等於我自己寫 Hexo 主題了），所以看來只能用之前的 {% post_link Hexo-插件歪門邪道 %} 來做點小魔改了。
 
 ## 寫 Injector
 
