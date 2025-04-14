@@ -45,7 +45,7 @@ SpacetimeDB 本身是使用 Rust 語言寫的，伺服端支援 Rust 或 C# 編�
 
 ## 實作
 
-主要實作機能：
+我要做個簡單的 3D 多人互動範例，測試機能：
 
 - 伺服端：
 
@@ -66,9 +66,8 @@ SpacetimeDB 本身是使用 Rust 語言寫的，伺服端支援 Rust 或 C# 編�
 
 先新建一個 Unity 專案，這邊使用 `URP 3D` 模板，並新增路徑 `/SpacetimeDBProj` 作為伺服端專案根目錄，具體專案根目錄結構如下：
 
-```bash
+```shell
 $ git ls-tree -r --name-only HEAD | tree --fromfile -L 1
-
 .
 ├── .gitignore
 ├── Assets
@@ -90,8 +89,20 @@ $ git ls-tree -r --name-only HEAD | tree --fromfile -L 1
 ```Dockerfile Dockerfile
 FROM clockworklabs/spacetime:latest
 
-CMD ["start"]
+USER root
+
+RUN mkdir -p /root/.local/share/spacetime/bin
+
+RUN ln -s /home/spacetime/.local/share/spacetime/bin/current /root/.local/share/spacetime/bin/current
+
+ENV PATH=/home/spacetime/.local/bin:/usr/share/dotnet:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+ENTRYPOINT [ "bash" ]
 ```
+
+{% note purple %}
+這邊特別改用 `USER root` 並設定環境變數的原因是為了開發時不需要再安裝 `rust`、`cargo`、`dotnet`，如果使用原本的 `Image`（綁定 `USER spacetime`，基本只是為了跑 `spacetime start`）會因為權限問題導致無法使用匯出等指令。
+{% endnote %}
 
 設定 `docker-compose` 以防之後服務需要擴充：
 
@@ -141,4 +152,124 @@ app:
 指令都是在 `WSL` 底下執行。
 {% endnote %}
 
-## Unity 端實作
+### 初始化伺服端
+
+```shell
+$ make app
+docker exec -it spacetimedb bash
+
+$ spacetime init --lang=rust server
+Project successfully created at path: server
+
+$ tree
+.
+├── Dockerfile
+├── Makefile
+├── docker-compose.yml
+└── server
+    ├── Cargo.toml
+    └── src
+        └── lib.rs
+```
+
+{% note purple %}
+我是在 Windows 底下安裝 `cargo` 用 `vscode` 編輯專案（專案不是用 `SSH` 連入 `WSL`），需要為 `rust-analyzer` 配置專案路徑：
+
+```json .vscode/settings.json
+{
+    .
+    .
+    .
+    "rust-analyzer.linkedProjects": [
+        "./SpacetimeDBProj/server/Cargo.toml",
+    ]
+}
+```
+
+{% endnote %}
+
+### 資料結構定義
+
+遊戲物件位置是基於 `Vector3` 操作，直接使用 [vector3](https://github.com/local-interloper/vector3/blob/main/src/vector3.rs) 方便後續向量操作。
+
+除了將缺失的類別刪掉外，最重要的是加上 `SpacetimeType` 派生，才能將類別使用在資料庫內。
+
+```rust server/types/vector3.rs
+#[derive(SpacetimeType, Clone, Copy, Default)]
+pub struct Vector3 {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
+}
+```
+
+{% note gray %}
+關於 `rust` 管理 `mod` 的相關知識就不多贅述了。
+
+另外，如果你有時間，也可以自己寫定義，但那就是遊戲引擎相關的話題了。。。
+{% endnote %}
+
+之後是遊戲內物件定義：
+
+{% tabs models %}
+
+<!-- tab 玩家資料 -->
+```rust player.rs
+#[spacetimedb::table(name = player, public)]
+pub struct Player {
+    #[primary_key]
+    identity: Identity,
+    #[unique]
+    #[auto_inc]
+    id: u32,
+    name: String,
+}
+```
+<!-- endtab -->
+
+<!-- tab 世界 -->
+```rust world.rs
+#[spacetimedb::table(name = world)]
+pub struct World {
+    #[primary_key]
+    #[unique]
+    #[auto_inc]
+    id: u32,
+    size: u32,
+    center: Vector3,
+}
+```
+<!-- endtab -->
+
+<!-- tab 物件 -->
+```rust entity.rs
+#[spacetimedb::table(name = entity, public)]
+pub struct Entity {
+    #[primary_key]
+    #[unique]
+    #[auto_inc]
+    id: u32,
+    name: String,
+}
+```
+<!-- endtab -->
+
+<!-- tab 玩家物件 -->
+```rust dummy.rs
+#[spacetimedb::table(name = dummy, public)]
+pub struct Dummy {
+    #[primary_key]
+    entity_id: u32,
+    #[index(btree)]
+    player_id:u32,
+    pos: Vector3,
+    vel: Vector3,
+}
+```
+<!-- endtab -->
+
+{% endtabs %}
+
+### Unity 端實作
+
+待續
