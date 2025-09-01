@@ -181,7 +181,7 @@ struct Listener {
 
 {% endnote %}
 
-順邊把模組包好，也在這邊把 `lazy_static` 給宣告好：
+把模組包好，也在這邊把 `lazy_static` 給宣告：
 
 ```rust fm_network.rs
 pub mod handler;
@@ -627,7 +627,7 @@ export default function GameViewScreenBase({ com }) {
 }
 ```
 
-解碼器的渲染器也是一樣，不需要重新訂閱 `JPEGDecoded` 事件：
+解碼器的渲染元件也是一樣，不需要重新訂閱 `JPEGDecoded` 事件：
 
 ```ts DecoderView.tsx
 interface Props {
