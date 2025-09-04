@@ -607,23 +607,24 @@ export async function get_play_history(key: string | null | undefined) {
 let clients: string[] = [];
 
 export default function GameViewScreenBase({ com }) {
-  const [clientCount, setClientCount] = useState<number>(0);
+    const [clients, updateClients] = useState<string[]>([]);
+    const [focusTarget, setFocusing] = useState<string>("");
 
-  useEffect(() => {
-    console.log("Initialize Network!");
+    useEffect(() => {
+        console.log("Initialize Network!");
 
-    startUdp();
-    addClientChangeListener("GameViewScreenBase", onClientChange);
+        startUdp();
+        addClientChangeListener("GameViewScreenBase", onClientChange);
 
-    return () => {
-      clients = [];
-    }; // reset clients when exit
-  }, [com.currentMode]); // dont re-call this if mode is not change
+        return () => {
+        clients = [];
+        }; // reset clients when exit
+    }, [com.currentMode]); // dont re-call this if mode is not change
 
-  // .
-  // .
-  // .
-  // return (<>/* react node */</>);
+    // .
+    // .
+    // .
+    // return (<>/* react node */</>);
 }
 ```
 
@@ -631,62 +632,67 @@ export default function GameViewScreenBase({ com }) {
 
 ```ts DecoderView.tsx
 interface Props {
-  addr: string;
-  setFocus?: ((addr: string) => void) | null;
-}
-
-let jpegUrls: string[] = [];
-
-function disposeJpegs() {
-    let url: string | undefined = undefined;
-    while ((url = jpegUrls.pop()) !== undefined) {
-        URL.revokeObjectURL(url);
-    }
+    addr: string;
+    setFocus?: ((addr: string) => void) | null;
 }
 
 export default function DecoderView({ addr, setFocus }: Props) {
-  const [, setJpegVersion] = useState<number>(0);
-  const [error, setError] = useState<boolean>(false);
+    const [, setJpegVersion] = useState<number>(0);
+    const [error, setError] = useState<boolean>(true);
+    const [jpegUrls, updateJpegUrls] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (addr === undefined) return;
-    console.log("registering listener for", addr);
-    addJpgDecodedListener(addr, (bytes) => {
-      updateJpeg(bytes);
-    });
+    function disposeAppend(arr: string[], newData?: string) {
+        let url: string | undefined = undefined;
+        while (url = arr.pop()) {
+            console.log("revoking URL", url);
+            URL.revokeObjectURL(url);
+        }
+        if (newData)
+            return [...arr, newData];
+        else
+            return arr;
+    }
 
-    return () => disposeJpegs();
-  }, [addr]); // dont re-call the effect if addr not changed
+    useEffect(() => {
+        if (addr === undefined)
+            return;
+        console.log("registering listener for", addr);
+        addJpgDecodedListener(addr, bytes => {
+            updateJpeg(bytes);
+        });
 
-  function updateJpeg(bytes: []) {
-    disposeJpegs();
+        return () => {
+            console.log(addr + " decoder view exited!");
+            disposeAppend(jpegUrls);
+        }
+    }, [addr]);
 
-    const blob = new Blob([new Uint8Array(bytes)], { type: "image/jpeg" });
-    const url = URL.createObjectURL(blob);
+    function updateJpeg(bytes: []) {
+        const blob = new Blob([new Uint8Array(bytes)], { type: "image/jpeg" });
+        const url = URL.createObjectURL(blob);
 
-    jpegUrls.push(url);
+        updateJpegUrls(prev => disposeAppend(prev, url));
 
-    setError(false);
-    setJpegVersion(v => v + 1);
-  }
+        setError(false);
+        setJpegVersion(v => v + 1);
+    }
 
-  return (
-    <>
-      <img
-        src={error || addr === undefined ? fallbackImg : jpegUrls[0]}
-        alt={addr}
-        onError={() => setError(true)}
-        onClick={() => setFocus && setFocus(addr)}
-      />
-    </>
-  );
+    return (
+        <>
+            <img src={error || addr === undefined ? fallbackImg : jpegUrls[jpegUrls.length - 1]}
+                alt={addr}
+                onError={() => setError(true)}
+                onClick={() => setFocus && setFocus(addr)} />
+        </>
+    );
 }
 ```
 
 {% folding purple::🔨 %}
 
 - 透過 `Blob` 就能把 `byte array` 當成 `jpeg` 使用
-- `jpegUrls` 寫在外面才能被修改到，`setJpegVersion` 就只是個觸發器
+- 使用 `useEffect` 要注意觸發條件與返回函數
+- `setJpegVersion` 就只是個觸發器，感覺可有可無
 - `URL.revokeObjectURL()` 是必須的，用來釋放記憶體，不然 `Blob` 會一直存在記憶體中
 
 {% endfolding %}
