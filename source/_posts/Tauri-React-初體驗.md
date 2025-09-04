@@ -607,24 +607,24 @@ export async function get_play_history(key: string | null | undefined) {
 let clients: string[] = [];
 
 export default function GameViewScreenBase({ com }) {
-    const [clients, updateClients] = useState<string[]>([]);
-    const [focusTarget, setFocusing] = useState<string>("");
+  const [clients, updateClients] = useState<string[]>([]);
+  const [focusTarget, setFocusing] = useState<string>("");
 
-    useEffect(() => {
-        console.log("Initialize Network!");
+  useEffect(() => {
+    console.log("Initialize Network!");
 
-        startUdp();
-        addClientChangeListener("GameViewScreenBase", onClientChange);
+    startUdp();
+    addClientChangeListener("GameViewScreenBase", onClientChange);
 
-        return () => {
-        clients = [];
-        }; // reset clients when exit
-    }, [com.currentMode]); // dont re-call this if mode is not change
+    return () => {
+      clients = [];
+    }; // reset clients when exit
+  }, [com.currentMode]); // dont re-call this if mode is not change
 
-    // .
-    // .
-    // .
-    // return (<>/* react node */</>);
+  // .
+  // .
+  // .
+  // return (<>/* react node */</>);
 }
 ```
 
@@ -632,59 +632,62 @@ export default function GameViewScreenBase({ com }) {
 
 ```ts DecoderView.tsx
 interface Props {
-    addr: string;
-    setFocus?: ((addr: string) => void) | null;
+  addr: string;
+  setFocus?: ((addr: string) => void) | null;
 }
 
 export default function DecoderView({ addr, setFocus }: Props) {
-    const [, setJpegVersion] = useState<number>(0);
-    const [error, setError] = useState<boolean>(true);
-    const [jpegUrls, updateJpegUrls] = useState<string[]>([]);
+  const [, setJpegVersion] = useState<number>(0);
+  const [error, setError] = useState<boolean>(true);
+  const [jpegUrls, updateJpegUrls] = useState<string[]>([]);
 
-    function disposeAppend(arr: string[], newData?: string) {
-        let url: string | undefined = undefined;
-        while (url = arr.pop()) {
-            console.log("revoking URL", url);
-            URL.revokeObjectURL(url);
-        }
-        if (newData)
-            return [...arr, newData];
-        else
-            return arr;
+  function disposeAppend(arr: string[], newData?: string) {
+    let url: string | undefined = undefined;
+    while ((url = arr.pop())) {
+      console.log("revoking URL", url);
+      URL.revokeObjectURL(url);
     }
+    if (newData) return [...arr, newData];
+    else return arr;
+  }
 
-    useEffect(() => {
-        if (addr === undefined)
-            return;
-        console.log("registering listener for", addr);
-        addJpgDecodedListener(addr, bytes => {
-            updateJpeg(bytes);
-        });
+  useEffect(() => {
+    if (addr === undefined) return;
+    console.log("registering listener for", addr);
+    addJpgDecodedListener(addr, (bytes) => {
+      updateJpeg(bytes);
+    });
 
-        return () => {
-            console.log(addr + " decoder view exited!");
-            disposeAppend(jpegUrls);
+    return () => {
+      console.log(addr + " decoder view exited!");
+      disposeAppend(jpegUrls);
+    };
+  }, [addr]);
+
+  function updateJpeg(bytes: []) {
+    const blob = new Blob([new Uint8Array(bytes)], { type: "image/jpeg" });
+    const url = URL.createObjectURL(blob);
+
+    updateJpegUrls((prev) => disposeAppend(prev, url));
+
+    setError(false);
+    setJpegVersion((v) => v + 1);
+  }
+
+  return (
+    <>
+      <img
+        src={
+          error || addr === undefined
+            ? fallbackImg
+            : jpegUrls[jpegUrls.length - 1]
         }
-    }, [addr]);
-
-    function updateJpeg(bytes: []) {
-        const blob = new Blob([new Uint8Array(bytes)], { type: "image/jpeg" });
-        const url = URL.createObjectURL(blob);
-
-        updateJpegUrls(prev => disposeAppend(prev, url));
-
-        setError(false);
-        setJpegVersion(v => v + 1);
-    }
-
-    return (
-        <>
-            <img src={error || addr === undefined ? fallbackImg : jpegUrls[jpegUrls.length - 1]}
-                alt={addr}
-                onError={() => setError(true)}
-                onClick={() => setFocus && setFocus(addr)} />
-        </>
-    );
+        alt={addr}
+        onError={() => setError(true)}
+        onClick={() => setFocus && setFocus(addr)}
+      />
+    </>
+  );
 }
 ```
 
