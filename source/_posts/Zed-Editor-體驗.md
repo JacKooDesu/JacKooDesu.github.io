@@ -25,10 +25,10 @@ tags: [雜談]
 
 {% folding red::PowerShell 自動下載 %}
 
-因為很懶，所以有寫個 [ps1](zed-updater.ps1) 來更新。
+因為很懶，所以有寫個 `ps1` 來更新，好奇可以到 [這裡](https://github.com/JacKooDesu/JacKooDesu.github.io/blob/main/source/_posts/Zed-Editor-體驗/zed-updater.ps1) 看源碼。
 
 ```PowerShell
-irm
+irm 'https://raw.githubusercontent.com/JacKooDesu/JacKooDesu.github.io/refs/heads/main/source/_posts/Zed-Editor-體驗/zed-updater.ps1' | iex
 ```
 
 {% endfolding %}
@@ -76,6 +76,12 @@ irm
 
 但是我敢保證，`Zed` 的 `AI` 拓展性非常高，加上 `Rust` 的速度，體驗上肯定會非常舒服。
 這確實開闢出另一條路，可以給另外一些競品做彎道超車。
+
+{% note purple %}
+
+官方說 `Zed` 有強化版的 `Claude` 體驗卡，我也不知道那是個啥。
+
+{% endnote %}
 
 ### 其他零碎優點
 
