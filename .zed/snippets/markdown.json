@@ -1,0 +1,30 @@
+{
+  "Note": {
+    "prefix": "redefine-note",
+    "body": ["{% note ${1:type} ${2:icon} %}", "", "{% endnote %}"]
+  },
+  "Note Large": {
+    "prefix": "redefine-note-large",
+    "body": ["{% notel ${1:type} ${2:icon} ${3:title} %}", "", "{% endnotel %}"]
+  },
+  "Button": {
+    "prefix": "redefine-btn",
+    "body": ["{% btn ${1:size}::${2:text}::${3:url}::${4:icon} %}"]
+  },
+  "Button Regular": {
+    "prefix": "redefine-btn-regular",
+    "body": ["{% btn regular::${1:text}::${2:url}::${3:icon} %}"]
+  },
+  "Fold": {
+    "prefix": "redefine-fold",
+    "body": ["{% folding ${1:color}::${2:title} %}", "", "{% endfolding %}"]
+  },
+  "Tabs": {
+    "prefix": "redefine-tabs",
+    "body": ["{% tabs ${1:id} %}", "", "{% endtabs %}"]
+  },
+  "Tab Item": {
+    "prefix": "redefine-tab-item",
+    "body": ["<!-- tab ${1:name} -->", "", "<!-- endtab -->"]
+  }
+}
