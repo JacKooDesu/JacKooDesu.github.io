@@ -2,6 +2,7 @@
 title: Rails MySQL JSON Index
 date: 2026-02-10 21:04:11
 tags: [MySQL, ROR]
+excerpt: "本文介紹在 Rails 專案中，針對 MySQL JSON 欄位建立索引的方法，並說明查詢與效能優化的實務技巧。"
 ---
 
 ## 原始目標

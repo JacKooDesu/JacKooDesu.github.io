@@ -2,6 +2,7 @@
 title: 紀錄於 GitHub 部屬 json API
 date: 2025-06-09 18:09:47
 tags: [GitHub]
+excerpt: "本文介紹如何利用 GitHub Action 與 Page 建立靜態 json API，說明自動化流程設計與任務資料管理的實務經驗。"
 ---
 
 ## 目的

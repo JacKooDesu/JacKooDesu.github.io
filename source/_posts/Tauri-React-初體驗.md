@@ -2,6 +2,7 @@
 title: Tauri + React 初體驗
 date: 2025-08-27 14:44:28
 tags: [Rust, JavaScript, React, Tauri]
+excerpt: "本文記錄作者使用 Tauri 結合 React 開發桌面應用的初體驗，涵蓋專案架構、UDP 通訊、事件處理、JPEG 解碼、學習歷程導出等技術細節與心得。"
 ---
 
 ## 前言

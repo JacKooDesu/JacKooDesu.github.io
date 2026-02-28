@@ -2,6 +2,7 @@
 title: Android OTA/無線 搖桿改鍵
 date: 2026-02-11 17:20:47
 tags: [Android, Root, 雜談]
+excerpt: "本文介紹在 Android 裝置上修改搖桿按鍵映射的方法，包含系統層級 keylayout 調整與第三方工具的應用經驗。"
 ---
 
 ## 前情提要

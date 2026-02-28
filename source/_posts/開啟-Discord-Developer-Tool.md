@@ -2,6 +2,7 @@
 title: 開啟 Discord Developer Tool
 date: 2025-04-12 16:58:04
 tags: [JS]
+excerpt: "本文說明如何在 Discord 桌面版啟用開發者工具，包含設定檔修改步驟與快捷鍵操作，協助使用者進行進階除錯與功能探索。"
 ---
 
 ## 需求

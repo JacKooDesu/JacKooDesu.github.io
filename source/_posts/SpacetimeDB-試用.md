@@ -2,6 +2,7 @@
 title: SpacetimeDB 試用
 date: 2025-04-12 17:55:16
 tags: [Unity, C#, Rust]
+excerpt: "本文介紹 SpacetimeDB 在遊戲開發中的應用，說明技術架構、專案環境設置及 Unity/Rust 整合流程。"
 ---
 
 ## 都是個啥

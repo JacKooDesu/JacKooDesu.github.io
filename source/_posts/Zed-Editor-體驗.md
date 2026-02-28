@@ -2,6 +2,7 @@
 title: Zed Editor 體驗
 date: 2025-09-26 17:18:44
 tags: [雜談]
+excerpt: "本文分享 Zed Editor 的使用體驗，評析其效能、設計、AI 輔助及與 VS Code 的差異，並提出優缺點與改進建議。"
 ---
 
 ## 啥東西

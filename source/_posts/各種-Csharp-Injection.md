@@ -2,6 +2,7 @@
 title: 各種 C# Injection
 date: 2025-03-11 15:24:57
 tags: [Unity, C#]
+excerpt: "文章介紹 C# 程式碼注入技術，從 Code Injection、Harmony 到 Mono.Cecil，並舉例說明如何在 Unity 專案中記錄方法呼叫，探討反射、IL 操作及自動化注入流程。"
 ---
 
 有時會碰到外部 Dll 或是其他專案成員寫的框架，想在不破壞原始碼為前提更改邏輯，`Code Injection` 就能派上用場。

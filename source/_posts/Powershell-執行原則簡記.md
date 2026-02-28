@@ -2,6 +2,7 @@
 title: Powershell 執行原則簡記
 date: 2025-03-13 13:48:11
 tags: [Powershell]
+excerpt: "本文簡要說明 Powershell 執行原則的設定方式，提供繞過限制以執行腳本的實用技巧。"
 ---
 
 ## `因為這個系統上已停用指令碼執行，所以無法載入 xxx.ps1 檔案`

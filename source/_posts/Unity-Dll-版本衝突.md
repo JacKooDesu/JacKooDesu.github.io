@@ -2,6 +2,7 @@
 title: Unity Dll 版本衝突
 date: 2025-03-11 20:58:16
 tags: [Unity,C#]
+excerpt: "本文說明 Unity 專案中 DLL 版本衝突的常見問題，並介紹透過 Assembly Definition 及 Override Reference 來解決相依性衝突的方法。"
 ---
 
 ## `The type 'TypeName' exists in both 'Dll-A, Version=x.x.x, Culture=neutral, PublicKeyToken=null' and 'Dll-B, Version=x.x.x, Culture=neutral, PublicKeyToken=null'`
