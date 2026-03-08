@@ -26,5 +26,9 @@
   "Tab Item": {
     "prefix": "redefine-tab-item",
     "body": ["<!-- tab ${1:name} -->", "", "<!-- endtab -->"]
+  },
+  "Post Link": {
+    "prefix": "hexo-post-link",
+    "body": ["{% post_link ${1:title} %}"]
   }
 }
